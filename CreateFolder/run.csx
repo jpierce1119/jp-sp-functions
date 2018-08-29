@@ -37,26 +37,26 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 		success = false;
 	}
 
-	var itemId = UpdateVendorLinks(sharePointSiteUrl, vendorName, userName, password);
-	if (itemId == 0)
+	success = UpdateVendorLinks(sharePointSiteUrl, vendorName, userName, password);
+	if (success)
+	{
+		resultMessage += "Vendor Links update successful\r\n";
+	}
+	else
 	{
 		resultMessage += "Vendor Links update unsuccessful\r\n";
 		success = false;
 	}
-	else
-	{
-		resultMessage += "Vendor Links update successful\r\n";
-	}
 
-	itemId = UpdateVendorTrackingList(sharePointSiteUrl, vendorName, userName, password);
-	if (itemId == 0)
+	success = UpdateVendorTrackingList(sharePointSiteUrl, vendorName, userName, password);
+	if (success)
+	{
+		resultMessage += "Vendor Tracking update successful\r\n";
+	}
+	else
 	{
 		resultMessage += "Vendor Tracking update unsuccessful\r\n";
 		success = false;
-	}
-	else
-	{
-		resultMessage += "Vendor Tracking update successful\r\n";
 	}
 
 	return success ? req.CreateResponse(HttpStatusCode.OK, resultMessage) : req.CreateResponse(HttpStatusCode.BadRequest, resultMessage);
@@ -85,7 +85,7 @@ public static bool Create(string sharePointSiteUrl, string documentLibrary, stri
 	}
 }
 
-public static int UpdateVendorTrackingList(string siteUrl, string library, string userName, string password)
+public static bool UpdateVendorTrackingList(string siteUrl, string library, string userName, string password)
 {
 	var authenticationManager = new PnPAuthenticationManager();
 	var clientContext = authenticationManager.GetSharePointOnlineAuthenticatedContextTenant(siteUrl, userName, password);
@@ -127,10 +127,10 @@ public static int UpdateVendorTrackingList(string siteUrl, string library, strin
 			listItem.Update();
 			list.Update();
 			context.ExecuteQuery();
-			return itemId;
+			return true;
 		}
 	}
-	return 0;
+	return false;
 }
 
 public static bool UpdateVendorLinks(string siteUrl, string library, string userName, string password)
