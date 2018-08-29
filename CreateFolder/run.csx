@@ -23,8 +23,6 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 	var clientContext = authenticationManager.GetSharePointOnlineAuthenticatedContextTenant(sharePointSiteUrl, userName, password);
 	var pnpClientContext = PnPClientContext.ConvertFrom(clientContext);
 
-	string newFolderUrl = UrlUtility.Combine(baseFolderServerRelativeUrl, newFolderName);
-
 	string resultMessage = "";
 	var success = true;
 
@@ -39,7 +37,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 		success = false;
 	}
 
-	var itemId = UpdateVendorLinks(sharePointSiteUrl, vendorName, password);
+	var itemId = UpdateVendorLinks(sharePointSiteUrl, vendorName, userName, password);
 	if (itemId == 0)
 	{
 		resultMessage += "Vendor Links update unsuccessful\r\n";
@@ -50,7 +48,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
 		resultMessage += "Vendor Links update successful\r\n";
 	}
 
-	itemId = UpdateVendorTrackingList(sharePointSiteUrl, vendorName, password);
+	itemId = UpdateVendorTrackingList(sharePointSiteUrl, vendorName, userName, password);
 	if (itemId == 0)
 	{
 		resultMessage += "Vendor Tracking update unsuccessful\r\n";
