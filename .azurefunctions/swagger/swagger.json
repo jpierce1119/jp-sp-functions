@@ -1,37 +1,37 @@
 ﻿{
   "swagger": "2.0",
   "info": {
-    "title": "SharePoint Azure Functions",
+    "title": "Uncommon Vendor Functions",
     "version": "1.0.0"
   },
-  "host": "spfunction.azurewebsites.net",
+  "host": "vendorfunctions.azurewebsites.net",
   "basePath": "/",
   "schemes": [
     "https",
     "http"
   ],
   "paths": {
-    "/api/CreateFolder": {
+    "/api/vendorfunctions": {
       "post": {
-        "description": "Creates SharePoint sub folder in a folder.",
-        "summary": "Create Folder",
-        "operationId": "Create Folder",
+        "description": "Miscellaneous Vendor Functions",
+        "summary": "Vendor Functions",
+        "operationId": "VendorFunctions",
         "produces": [],
         "consumes": [],
         "parameters": [
           {
-             "name": "Folder Creation Info",
-              "in": "body",
-              "description": "Folder Creation Information",
-              "required": true,
-              "schema": {
-                "$ref": "#/definitions/folderCreationInfo"
-              }
+            "name": "Vendor Function Info",
+            "in": "body",
+            "description": "Vendor Function Information",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/vendorFunctionInfo"
+            }
           }
         ],
         "responses": {
           "200": {
-            "description": "Result message shows if folder is created or already exists",
+            "description": "Misc result message.",
             "x-ms-summary": "Result message",
             "schema": {
               "type": "string"
@@ -50,13 +50,7 @@
     "folderCreationInfo": {
       "type": "object",
       "properties": {
-        "sharePointSiteUrl": {
-          "type": "string"
-        },
-        "baseFolderServerRelativeUrl": {
-          "type": "string"
-        },
-        "newFolderName": {
+        "vendorName": {
           "type": "string"
         }
       }
