@@ -47,7 +47,7 @@
     }
   },
   "definitions": {
-    "folderCreationInfo": {
+    "vendorFunctionInfo": {
       "type": "object",
       "properties": {
         "vendorName": {
