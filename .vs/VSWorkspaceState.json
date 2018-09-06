@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\CreateFolder"
+    "\\.azurefunctions",
+    "\\.azurefunctions\\swagger",
+    "\\vendorfunctions"
   ],
-  "SelectedNode": "\\CreateFolder\\run.csx",
+  "SelectedNode": "\\vendorfunctions\\run.csx",
   "PreviewInSolutionExplorer": false
 }
