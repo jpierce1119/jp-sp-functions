@@ -170,7 +170,7 @@ public static bool UpdateVendorLinks(string siteUrl, string library, string user
 			var listItemUrl = new FieldUrlValue
 			{
 				Url = url,
-				Description = url
+				Description = "https://uncommonsolutions.sharepoint.com" + url
 			};
 
 			listItem["URL"] = listItemUrl;
