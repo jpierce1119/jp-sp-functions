@@ -170,7 +170,7 @@ public static bool UpdateVendorLinks(string siteUrl, string library, string user
 			var listItemUrl = new FieldUrlValue
 			{
 				Url = url,
-				Description = library
+				Description = url
 			};
 
 			listItem["URL"] = listItemUrl;

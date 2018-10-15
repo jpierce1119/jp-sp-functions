@@ -5,6 +5,5 @@
     "\\.azurefunctions\\swagger",
     "\\vendorfunctions"
   ],
-  "SelectedNode": "\\vendorfunctions\\run.csx",
   "PreviewInSolutionExplorer": false
 }
